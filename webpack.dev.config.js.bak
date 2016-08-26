@@ -1,0 +1,56 @@
+/**
+ * Created by zhoulijun on 2015/12/27.
+ */
+var webpack = require("webpack");
+//var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+var path = require("path");
+var fsCopy = require("./fs-copy.js");
+//定义配置文件 使用开发时配置文件
+fsCopy.copy("config/env.dev.js","src/env.js");
+module.exports = {
+    entry : {
+        app : [
+            "webpack-dev-server/client?http://172.18.1.30:9999",
+            "webpack/hot/only-dev-server",
+            "./src/app.js"
+        ]
+    },
+    output : {
+        filename : "[name].js"
+    },
+    devtool : "cheap-module-source-map",
+    module : {
+        loaders : [
+            {test : /\.(js|scss)$/ , loader : "react-hot" ,exclude: /node_modules/, include : path.join(__dirname,"src")},
+            { test: /\.css$/, loader: 'style-loader!css-loader' },
+            {
+                test: /.jsx?$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+                query: {
+                    presets: ['es2015', 'react']
+                }
+            }
+        ]
+    },
+    resolve : {
+        extensions : ['','.js','.css'],
+        alias : {
+            view : __dirname + "/src/view",
+            model : __dirname + "/src/model",
+            src : __dirname + "/src",
+            components : __dirname + "/src/server/components"
+        }
+    },
+    externals:{
+        'react' : "React",
+        'moment' : "moment",
+        'react-dom' : "ReactDOM",
+        'react-router' : "ReactRouter",
+    },
+    plugins : [
+        new webpack.HotModuleReplacementPlugin()
+    ]
+};

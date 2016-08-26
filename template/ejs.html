@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"> 
+		<meta name="apple-mobile-web-app-capable" content="yes"> 
+		<meta name="format-detection" content="telephone=no"> 
+		<title>{{=title}}</title>
+		<link rel="stylesheet" type="text/css" href="font/iconfont.css"/>
+	</head>
+
+	<body>
+		<section class="loading-module">
+			<div class="loading-box loading-box-3">
+				<div class="loading-wave-grp">
+					<span class="loading-wave-bottom"></span>
+					<span class="loading-wave"></span>
+					<span class="loading-wave-up"></span>
+				</div>
+			</div>
+		</section>
+		<article class="w640" id="content">
+			{{-html}}
+		</article>
+		<script type="text/javascript">
+			window.state={{-state}};
+		</script>
+		<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="//cdn.bootcss.com/react/15.0.0/react.min.js"></script>
+		<script src="//cdn.bootcss.com/react/15.0.0/react-dom.min.js"></script>
+		<script src="//cdn.bootcss.com/react-router/2.4.1/ReactRouter.min.js"></script>
+		<script src="//cdn.bootcss.com/moment.js/2.14.1/moment.min.js"></script>
+		<script src="//cdn.bootcss.com/moment.js/2.14.1/locale/zh-cn.js"></script>
+	</body>
+
+</html>
